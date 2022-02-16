@@ -1,6 +1,6 @@
 # Frontend Mentor - Profile card component solution
 
-This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/codeweeks/-valentines-greeting-challenge-co62942e9aa8970a7028de53d). 
+This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/codeweeks/-romantic-grammar-corrector-challenge-co2514d1b9c9e8f6344b71d67). 
 
 ## Table of contents
 
@@ -17,12 +17,9 @@ This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/code
 
 ## Overview
 
-This is my solution to the Valentine's Challenge for the 15th of January, 2022.
+This is my solution to the Valentine's Challenge for the 16th of January, 2022.
 It is a small project that interacts with the users to display a valentines
-greeting with 3 optional input, a sender, recipient and a message from the
-selected options or the user can input a custom message. As an added element, I
-added a button to the custom input that if the user presses the button it will
-randomly choose a valentines joke as the input.
+text and it will will fix the uppercases and the lowercases in an animated way.
 
 ### Screenshot
 
@@ -33,8 +30,8 @@ randomly choose a valentines joke as the input.
 
 ### Links
 
-- Solution URL: [GitHub](https://github.com/newbpydev/valentines-15-2022)
-- Live Site URL: [Live Site](https://distracted-goldwasser-763af5.netlify.app/)
+- Solution URL: [GitHub](https://github.com/newbpydev/valentines-16-2022)
+- Live Site URL: [Live Site](https://relaxed-boyd-149753.netlify.app/)
 
 ## My process
 
@@ -47,25 +44,29 @@ randomly choose a valentines joke as the input.
 
 ### What I learned
 
-I have learned on this project how to get instant input feedback based on what
-the user types. It is a nice feature to keep in mind while building my own apps.
+I have learned on this project how to use the SetInterval and the clearInterval
+functions to loop those a set of instructions by repeating after a certain
+number of seconds.
 
 ```javascript
-const getRandJoke = () => {
-  const randIndex = Math.floor(Math.random() * randValentinesJoke.length);
-  return randValentinesJoke[randIndex];
-}
-// getRandJoke();
+const animateLetter = () => {
+  const letterEl = document.querySelectorAll(".letter");
+  const letterFixedEl = document.querySelectorAll(".letter-fixed");
+  let interId = 0;
+  let index = 0;
 
-customEl.addEventListener("input", () => {
-  msgObject["msg"] = customEl.value;
-  writeGreeting();
-});
+  interId = setInterval(() => {
+    if (letterEl[index].textContent !== letterFixedEl[index].textContent) {
+      letterEl[index].classList.add("inactive");
+      letterFixedEl[index].classList.add("active");
+    }
+    index++;
 
-btnJokeEl.addEventListener("click", () => {
-  msgObject["msg"] = getRandJoke();
-  customEl.value = msgObject['msg'];
-  writeGreeting();
+    if (index === letterEl.length) {
+      clearInterval(interId);
+    }
+  }, 200);
+};
 ```
 
 ### Continued development
@@ -75,8 +76,10 @@ the elements on my pages.
 
 ### Useful resources
 
-- [OWASP Cross Site Scripting Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) - This article provides a simple positive model for preventing XSS using output encoding properly. While there are a huge number of XSS attack vectors, following a few simple rules can completely defend against this serious attack.
-- [YouTube - RegEx](https://www.youtube.com/watch?v=rhzKDrUiJVk&t=1029s&ab_channel=WebDevSimplified) - Having the ability to search through text, validate text, and replace text using an advanced set of rules is exactly what Regex is for. Unfortunately, people fail to ever truly learn Regex. In this video I will be teaching you everything you need to know about Regex. We will talk about what Regex is, what Regex flags are, how to do simple and complex matches, how to handle look aheads and look behinds, and much more. Then at the end of the video I will show you how to use Regex to validate and format a phone number in various different formats.
+- [MDN - setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) - The setInterval() method, offered on the Window and Worker interfaces, repeatedly calls a function or executes a code snippet, with a fixed time delay between each call.
+This method returns an interval ID which uniquely identifies the interval, so you can remove it later by calling clearInterval().
+
+- [YouTube - Using the setInterval() function in JavaScript](https://www.youtube.com/watch?v=ubLC1JxMqfY&t=672s&ab_channel=dcode) - You can use the "setInterval()" function in JavaScript to make your code run repeatedly on a timer. This can be super useful for clocks, counters, updating your page with live data or even creating games.
 
 ## Author
 
