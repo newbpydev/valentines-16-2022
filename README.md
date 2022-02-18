@@ -1,4 +1,4 @@
-# Frontend Mentor - Profile card component solution
+# Valentine's Challenge - Romantic Grammar Corrector Challenge Solution
 
 This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/codeweeks/-romantic-grammar-corrector-challenge-co2514d1b9c9e8f6344b71d67). 
 
